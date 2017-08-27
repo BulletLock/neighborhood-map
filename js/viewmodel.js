@@ -1,6 +1,6 @@
-                                            //===================================//
-                                            //      View Model for the app       //
-                                            //===================================//
+//===================================//
+//      View Model for the app       //
+//===================================//
 
 var ViewModel = function() {
   var self = this;
@@ -39,7 +39,10 @@ var ViewModel = function() {
       
 		if (!filter) {
 			self.locationList().forEach(function(locationItem){
-				locationItem.visible(true);
+				if (locationItem.marker) {
+                    locationItem.visible(true);
+                    locationItem.marker.setVisible(true);
+                }
 			});
 			return self.locationList();
 		} else {
