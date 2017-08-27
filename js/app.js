@@ -58,27 +58,9 @@ function initMap() {
   });
   var bounds = new google.maps.LatLngBounds();
 
-  //====================================================//
-  // Add markers from locations listed in datamodel.js  //
-  //====================================================//
-
-  for (i = 0; i < locations.length; i++) {
-    var position = locations[i].location;
-    var title = locations[i].title;
-
-    marker = new google.maps.Marker({
-      map: map,
-      position: position,
-      title: title,
-      animation: google.maps.Animation.DROP,
-    });
-    bounds.extend(marker.position);
-    VM.locationList()[i].marker = marker;
-
-
-    //==========================================================//
-    // Open info window when marker is clicked 'this' = marker  //
-    //==========================================================//
+  //==========================================================//
+  // Open info window when marker is clicked 'this' = marker  // 
+  //==========================================================//
       
     marker.addListener('click', function() {
       toggleBounce(this);
@@ -89,16 +71,16 @@ function initMap() {
     function toggleBounce(marker) {
       marker.setAnimation(google.maps.Animation.BOUNCE);
       setTimeout(function() {
-        marker.setAnimation(null)
+        marker.setAnimation(null);
       }, 1500);
     }
 
-    //===================================================//  
-    // Populate infowindow with marker title             //
-    // & wikipedia API info when the marker is clicked   //
-    //===================================================//
-
-    function populateInfoWindow(marker, infowindow) {
+  //===================================================//  
+  // Populate infowindow with marker title             // 
+  // & wikipedia API info when the marker is clicked   //
+  //===================================================//
+    
+  function populateInfoWindow(marker, infowindow) {
 
       var wikiUrl = 'https://en.wikipedia.org/w/api.php?action=opensearch&search=' + marker.title + '&imlimit=5&format=json&callback=wikiCallback';
       
@@ -156,6 +138,24 @@ function initMap() {
         infowindow.setMarker = null;
       });
     }
+    
+  //====================================================//
+  // Add markers from locations listed in datamodel.js  //
+  //====================================================//
+
+  for (i = 0; i < locations.length; i++) {
+    var position = locations[i].location;
+    var title = locations[i].title;
+
+    marker = new google.maps.Marker({
+      map: map,
+      position: position,
+      title: title,
+      animation: google.maps.Animation.DROP,
+    });
+    bounds.extend(marker.position);
+    VM.locationList()[i].marker = marker;
+
     map.fitBounds(bounds);
   }
 
