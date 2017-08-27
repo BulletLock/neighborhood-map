@@ -62,11 +62,11 @@ function initMap() {
   // Open info window when marker is clicked 'this' = marker  // 
   //==========================================================//
       
-    marker.addListener('click', function() {
+   var markerAnimation = function() {
       toggleBounce(this);
       map.panTo(marker.getPosition());
       populateInfoWindow(this, infoWindow);
-    });
+    };
 
     function toggleBounce(marker) {
       marker.setAnimation(google.maps.Animation.BOUNCE);
@@ -156,6 +156,7 @@ function initMap() {
     bounds.extend(marker.position);
     VM.locationList()[i].marker = marker;
 
+     marker.addListener('click', markerAnimation);
     map.fitBounds(bounds);
   }
 
