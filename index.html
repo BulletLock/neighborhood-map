@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+    
+    <div id="map">If you can read this, there has been an error loading Google Maps. Please Try Again.</div>
+    
+    <div class="container">
+        <div id="nav-icon2">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <section class="list-box">
+
+          <div class="list-box-contents">
+
+            <div class="title">
+              <h1>Tourist Places in Goa</h1>
+            </div>
+
+            <div class="menu">
+              <input class="search" type="text" data-bind="value: searchTerm, valueUpdate: 'afterkeydown'" placeholder="Search....">
+              <ul data-bind="foreach: filteredList">
+                <li class="list-item" data-bind="text: title, click: $parent.openWindow, visible: visible"></li>
+              </ul>
+              </div>
+          </div>
+        </section>
+    </div>
+	
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="js/datamodel.js"></script>
+	<script src="js/app.js"></script>
+   <script src="js/viewmodel.js"></script>
+   <!-- Replace key parameter. to use your API key instead of this -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWSswJnShPXsE-VebeTJbi0mlLY0a_b2U&callback=initMap"
+    async defer></script>
+    
+  </body>
+</html>
