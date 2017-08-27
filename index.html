@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Simple Map</title>
-    <meta name="viewport" content="initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/styles.css">
   </head>
@@ -46,7 +46,7 @@
    <script src="js/viewmodel.js"></script>
    <!-- Replace key parameter. to use your API key instead of this -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWSswJnShPXsE-VebeTJbi0mlLY0a_b2U&callback=initMap"
-    async defer></script>
+    async defer onerror="mapErrorHandling()"></script>
     
   </body>
 </html>
