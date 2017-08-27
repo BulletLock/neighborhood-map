@@ -1,6 +1,6 @@
-                    //==========================================//
-                    // Navigation to be used below width 767px  //
-                    //==========================================//
+//==========================================//
+// Navigation to be used below width 767px  //
+//==========================================//
 
 //==================================================//
 // jQuery event for toggling mobile nav in and out  //
@@ -22,9 +22,9 @@ $('.list-item').on('click', function() {
 });
 
 
-                    //====================//
-                    // Script for map     //
-                    //====================//
+//====================//
+// Script for map     //
+//====================//
 
 
 //===================================//
@@ -143,7 +143,7 @@ function initMap() {
   // Add markers from locations listed in datamodel.js  //
   //====================================================//
 
-  for (i = 0; i < locations.length; i++) {
+  for (i = 0, len = locations.length; i < len; i++) {
     var position = locations[i].location;
     var title = locations[i].title;
 
@@ -156,7 +156,7 @@ function initMap() {
     bounds.extend(marker.position);
     VM.locationList()[i].marker = marker;
 
-     marker.addListener('click', markerAnimation);
+    marker.addListener('click', markerAnimation);
     map.fitBounds(bounds);
   }
 
@@ -164,4 +164,17 @@ function initMap() {
   // Apply Knockout.js bindings   //
   //==============================//
   ko.applyBindings(VM);
+}
+
+//=====================================//
+// Error handling for google maps api  //
+//=====================================//
+
+function mapErrorHandling() {
+  var errorMsg = 'Sorry, not working. Please refresh and try again!';
+
+  var mapDiv = document.getElementById('map');
+  var errorDiv = document.createElement('h1');
+  errorDiv.innerHTML = errorMsg;
+  mapDiv.appendChild(errorDiv);
 }
